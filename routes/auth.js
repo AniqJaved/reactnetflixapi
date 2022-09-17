@@ -38,7 +38,7 @@ router.post("/login", async (req,res)=>{
             { expiresIn: "5d"}
         );
 
-        const { password, ...info} = user._doc; // So here we are using object destructuring in which we are grabbing password and only sending other fields except password in response.
+        const { password, ...info} = user._doc; // So here we are using object destructuring in which we are grabbing password and only sending other fields except password in response. _doc is basically all the information retrieved about a single user.
 
         res.status(200).json({...info, accessToken});
     }

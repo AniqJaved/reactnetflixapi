@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const authRoute = require('./routes/auth')
+const userRoute = require('./routes/users')
 
 //Grabbing port
 const port = process.env.PORT || 8800
@@ -19,8 +20,16 @@ mongoose.connect(process.env.MONGO_URL,{
 //Express using json format for files
 app.use(express.json());
 
+
+/////////////////////////Router Paths///////////////////////////////////
+
 //Path for auth router file
 app.use("/api/auth", authRoute);
+
+//Path for user router file
+app.use("/api/users", userRoute);
+////////////////////////////////////////////////////////////////////////
+
 
 app.listen(port,()=>{
     console.log(`Server up at ` + port)
