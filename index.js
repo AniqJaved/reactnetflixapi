@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const authRoute = require('./routes/auth')
 const userRoute = require('./routes/users')
+const movieRoute = require('./routes/movies')
 
 //Grabbing port
 const port = process.env.PORT || 8800
@@ -28,6 +29,9 @@ app.use("/api/auth", authRoute);
 
 //Path for user router file
 app.use("/api/users", userRoute);
+
+//Path for user router file
+app.use("/api/movies", movieRoute);
 ////////////////////////////////////////////////////////////////////////
 
 
