@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 const authRoute = require('./routes/auth')
 const userRoute = require('./routes/users')
 const movieRoute = require('./routes/movies')
+const listsRoute = require('./routes/lists')
 
 //Grabbing port
 const port = process.env.PORT || 8800
@@ -32,6 +33,10 @@ app.use("/api/users", userRoute);
 
 //Path for user router file
 app.use("/api/movies", movieRoute);
+
+//Path for lists router file
+app.use("/api/lists", listsRoute);
+
 ////////////////////////////////////////////////////////////////////////
 
 

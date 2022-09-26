@@ -82,7 +82,7 @@ router.get("/random", verifyToken ,async (req,res)=>{    //We are not using admi
                 { $sample: { size: 1}}
             ]);
         }
-
+ 
         res.status(200).json(movie)
     }
     catch(err){
@@ -101,6 +101,23 @@ router.get("/find/:id", verifyToken, async (req, res) =>{
         res.status(500).json(err);
     }
 }); 
+
+
+//GET ALL MOVIES
+router.get("/", verifyToken, async(req,res)=>{
+    if(req.user.isAdmin){
+        try{
+            const movies = await Movie.find();
+            res.status(200).json(movies.reverse());
+        }
+        catch(err){
+            res.status(500).json(err);
+        }
+    }
+    else{
+        res.status(403).json("You are not allowed!");
+    }
+})
 
 
 
